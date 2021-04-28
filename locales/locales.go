@@ -12,11 +12,13 @@ type ordinalFunction func(int, string) string
 
 type meridiemFunction func(int, int, bool) string
 
+type relativeTimeFunction func(int, bool, bool) string //func(number, isFuture)
+
 type calendarFunction func(int, int) string
 
 type longDateFormats map[string]string
 
-type relativeTimeFormats map[string]string
+type relativeTimeFunctions map[string]relativeTimeFunction
 
 type calendarFunctions map[string]calendarFunction
 
@@ -37,7 +39,7 @@ type LocaleDetails struct {
 	MeridiemFunc           meridiemFunction
 	Week                   week
 	LongDateFormats        longDateFormats
-	RelativeTimes          relativeTimeFormats
+	RelativeTimes          relativeTimeFunctions
 	Calendar               calendarFunctions
 	MonthsRegex            *regexp.Regexp
 	MonthsShortRegex       *regexp.Regexp
@@ -49,15 +51,15 @@ type LocaleDetails struct {
 
 // RelativeTime returns the relative time for the period.
 func (ld *LocaleDetails) RelativeTime(format string, number int, withoutSuffix bool, past bool) string {
-	relTime := strings.Replace(ld.RelativeTimes[format], "%d", strconv.Itoa(number), 1)
+	relTime := strings.Replace(ld.RelativeTimes[format](number, withoutSuffix, past), "%d", strconv.Itoa(number), 1)
 
 	if withoutSuffix {
 		return relTime
 	}
 
-	futurePast := ld.RelativeTimes["future"]
+	futurePast := ld.RelativeTimes["future"](number, withoutSuffix, past)
 	if past {
-		futurePast = ld.RelativeTimes["past"]
+		futurePast = ld.RelativeTimes["past"](number, withoutSuffix, past)
 	}
 
 	return strings.Replace(futurePast, "%s", relTime, 1)
@@ -188,7 +190,7 @@ func mapString(vs []string, f func(string) string) []string {
 }
 
 func newLocale(code string, wd []string, wds []string, wdm []string, m []string, ms []string, of ordinalFunction,
-	mf meridiemFunction, wk week, ld longDateFormats, rt relativeTimeFormats, cal calendarFunctions,
+	mf meridiemFunction, wk week, ld longDateFormats, rt relativeTimeFunctions, cal calendarFunctions,
 	monthsRegex string, monthsShortRegex string, weekdaysRegex string, weekdaysShortRegex string, weekdaysMinRegex string, domOrdinalRegex string) LocaleDetails {
 	if mf == nil {
 		mf = func(hours int, minutes int, isLower bool) string {

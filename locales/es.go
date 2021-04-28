@@ -33,21 +33,49 @@ var EsLocale = newLocale(
 		"LLL":  "D [de] MMMM [de] YYYY H:mm",
 		"LLLL": "dddd, D [de] MMMM [de] YYYY H:mm",
 	},
-	relativeTimeFormats{
-		"future": "en %s",
-		"past":   "hace %s",
-		"s":      "unos segundos",
-		"ss":     "%d segundos",
-		"m":      "un minuto",
-		"mm":     "%d minutos",
-		"h":      "una hora",
-		"hh":     "%d horas",
-		"d":      "un día",
-		"dd":     "%d días",
-		"M":      "un mes",
-		"MM":     "%d meses",
-		"y":      "un año",
-		"yy":     "%d años",
+	relativeTimeFunctions{
+		"future": func(number int, withoutSuffix bool, past bool) string {
+			return "en %s"
+		},
+		"past": func(number int, withoutSuffix bool, past bool) string {
+			return "hace %s"
+		},
+		"s": func(number int, withoutSuffix bool, past bool) string {
+			return "unos segundos"
+		},
+		"ss": func(number int, withoutSuffix bool, past bool) string {
+			return "%d segundos"
+		},
+		"m": func(number int, withoutSuffix bool, past bool) string {
+			return "un minuto"
+		},
+		"mm": func(number int, withoutSuffix bool, past bool) string {
+			return "%d minutos"
+		},
+		"h": func(number int, withoutSuffix bool, past bool) string {
+			return "una hora"
+		},
+		"hh": func(number int, withoutSuffix bool, past bool) string {
+			return "%d horas"
+		},
+		"d": func(number int, withoutSuffix bool, past bool) string {
+			return "un día"
+		},
+		"dd": func(number int, withoutSuffix bool, past bool) string {
+			return "%d días"
+		},
+		"M": func(number int, withoutSuffix bool, past bool) string {
+			return "un mes"
+		},
+		"MM": func(number int, withoutSuffix bool, past bool) string {
+			return "%d meses"
+		},
+		"y": func(number int, withoutSuffix bool, past bool) string {
+			return "un año"
+		},
+		"yy": func(number int, withoutSuffix bool, past bool) string {
+			return "%d años"
+		},
 	},
 	calendarFunctions{
 		"sameDay": func(hours int, day int) string {

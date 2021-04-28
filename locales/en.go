@@ -41,21 +41,49 @@ var EnLocale = newLocale(
 		"LLL":  "MMMM D, YYYY h:mm A",
 		"LLLL": "dddd, MMMM D, YYYY h:mm A",
 	},
-	relativeTimeFormats{
-		"future": "in %s",
-		"past":   "%s ago",
-		"s":      "a few seconds",
-		"ss":     "%d seconds",
-		"m":      "a minute",
-		"mm":     "%d minutes",
-		"h":      "an hour",
-		"hh":     "%d hours",
-		"d":      "a day",
-		"dd":     "%d days",
-		"M":      "a month",
-		"MM":     "%d months",
-		"y":      "a year",
-		"yy":     "%d years",
+	relativeTimeFunctions{
+		"future": func(number int, withoutSuffix bool, past bool) string {
+			return "in %s"
+		},
+		"past": func(number int, withoutSuffix bool, past bool) string {
+			return "%s ago"
+		},
+		"s": func(number int, withoutSuffix bool, past bool) string {
+			return "a few seconds"
+		},
+		"ss": func(number int, withoutSuffix bool, past bool) string {
+			return "%d seconds"
+		},
+		"m": func(number int, withoutSuffix bool, past bool) string {
+			return "a minute"
+		},
+		"mm": func(number int, withoutSuffix bool, past bool) string {
+			return "%d minutes"
+		},
+		"h": func(number int, withoutSuffix bool, past bool) string {
+			return "an hour"
+		},
+		"hh": func(number int, withoutSuffix bool, past bool) string {
+			return "%d hours"
+		},
+		"d": func(number int, withoutSuffix bool, past bool) string {
+			return "a day"
+		},
+		"dd": func(number int, withoutSuffix bool, past bool) string {
+			return "%d days"
+		},
+		"M": func(number int, withoutSuffix bool, past bool) string {
+			return "a month"
+		},
+		"MM": func(number int, withoutSuffix bool, past bool) string {
+			return "%d months"
+		},
+		"y": func(number int, withoutSuffix bool, past bool) string {
+			return "a year"
+		},
+		"yy": func(number int, withoutSuffix bool, past bool) string {
+			return "%d years"
+		},
 	},
 	calendarFunctions{
 		"sameDay": func(hours int, day int) string {

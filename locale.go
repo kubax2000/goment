@@ -11,6 +11,7 @@ import (
 const DefaultLocaleCode = "en"
 
 var supportedLocales = map[string]locales.LocaleDetails{
+	"cs": locales.CsLocale,
 	"en": locales.EnLocale,
 	"es": locales.EsLocale,
 	"fr": locales.FrLocale,

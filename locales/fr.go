@@ -49,21 +49,49 @@ var FrLocale = newLocale(
 		"LLL":  "D MMMM YYYY HH:mm",
 		"LLLL": "dddd D MMMM YYYY HH:mm",
 	},
-	relativeTimeFormats{
-		"future": "dans %s",
-		"past":   "il y a %s",
-		"s":      "quelques secondes",
-		"ss":     "%d secondes",
-		"m":      "une minute",
-		"mm":     "%d minutes",
-		"h":      "une heure",
-		"hh":     "%d heures",
-		"d":      "un jour",
-		"dd":     "%d jours",
-		"M":      "un mois",
-		"MM":     "%d mois",
-		"y":      "un an",
-		"yy":     "%d ans",
+	relativeTimeFunctions{
+		"future": func(number int, withoutSuffix bool, past bool) string {
+			return "dans %s"
+		},
+		"past": func(number int, withoutSuffix bool, past bool) string {
+			return "il y a %s"
+		},
+		"s": func(number int, withoutSuffix bool, past bool) string {
+			return "quelques secondes"
+		},
+		"ss": func(number int, withoutSuffix bool, past bool) string {
+			return "%d secondes"
+		},
+		"m": func(number int, withoutSuffix bool, past bool) string {
+			return "une minute"
+		},
+		"mm": func(number int, withoutSuffix bool, past bool) string {
+			return "%d minutes"
+		},
+		"h": func(number int, withoutSuffix bool, past bool) string {
+			return "une heure"
+		},
+		"hh": func(number int, withoutSuffix bool, past bool) string {
+			return "%d heures"
+		},
+		"d": func(number int, withoutSuffix bool, past bool) string {
+			return "un jour"
+		},
+		"dd": func(number int, withoutSuffix bool, past bool) string {
+			return "%d jours"
+		},
+		"M": func(number int, withoutSuffix bool, past bool) string {
+			return "un mois"
+		},
+		"MM": func(number int, withoutSuffix bool, past bool) string {
+			return "%d mois"
+		},
+		"y": func(number int, withoutSuffix bool, past bool) string {
+			return "un an"
+		},
+		"yy": func(number int, withoutSuffix bool, past bool) string {
+			return "%d ans"
+		},
 	},
 	calendarFunctions{
 		"sameDay": func(hours int, day int) string {
