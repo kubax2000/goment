@@ -1,4 +1,4 @@
-module github.com/nleeper/goment
+module github.com/kubax2000/goment
 
 go 1.14
 

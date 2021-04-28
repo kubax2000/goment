@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/nleeper/goment/locales"
-	"github.com/nleeper/goment/regexps"
+	"github.com/kubax2000/goment/locales"
+	"github.com/kubax2000/goment/regexps"
 )
 
 var yearIdx = 0

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"time"
 
-	"github.com/nleeper/goment/locales"
+	"github.com/kubax2000/goment/locales"
 )
 
 var timeNow = time.Now

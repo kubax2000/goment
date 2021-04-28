@@ -4,7 +4,7 @@ import (
 	"errors"
 	"strings"
 
-	"github.com/nleeper/goment/locales"
+	"github.com/kubax2000/goment/locales"
 )
 
 // DefaultLocaleCode is the default locale used by Goment if not set.
